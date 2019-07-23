@@ -1,0 +1,32 @@
+{"count": 1, "ids": [2], "pos": "np", "rank": 0.1269021796349766, "text": "systems"}
+{"count": 1, "ids": [31, 24], "pos": "np", "rank": 0.10455700768182621, "text": "mixed types"}
+{"count": 1, "ids": [19, 5], "pos": "np", "rank": 0.07053371920411122, "text": "minimal set"}
+{"count": 2, "ids": [15], "pos": "vbn", "rank": 0.057120921087737773, "text": "considered"}
+{"count": 1, "ids": [11, 12], "pos": "np", "rank": 0.056878009170079076, "text": "strict inequations"}
+{"count": 1, "ids": [6, 7], "pos": "np", "rank": 0.05406447126927224, "text": "natural numbers"}
+{"count": 3, "ids": [24], "pos": "nns", "rank": 0.05227850384091311, "text": "types"}
+{"count": 4, "ids": [5], "pos": "nn", "rank": 0.03526685960205561, "text": "set"}
+{"count": 1, "ids": [19, 23, 5], "pos": "np", "rank": 0.03526685960205561, "text": "minimal generating sets"}
+{"count": 1, "ids": [30], "pos": "vbg", "rank": 0.03500864785162595, "text": "solving"}
+{"count": 3, "ids": [20], "pos": "nns", "rank": 0.03286652629814942, "text": "solutions"}
+{"count": 1, "ids": [3, 4], "pos": "np", "rank": 0.02916010308167307, "text": "linear constraints"}
+{"count": 1, "ids": [3, 9, 10], "pos": "np", "rank": 0.02916010308167307, "text": "linear diophantine equations"}
+{"count": 2, "ids": [12], "pos": "nns", "rank": 0.028439004585039538, "text": "inequations"}
+{"count": 1, "ids": [13, 12], "pos": "np", "rank": 0.028439004585039538, "text": "nonstrict inequations"}
+{"count": 1, "ids": [7], "pos": "nns", "rank": 0.02703223563463612, "text": "numbers"}
+{"count": 1, "ids": [25], "pos": "vbn", "rank": 0.02245627225982374, "text": "given"}
+{"count": 1, "ids": [28], "pos": "vbg", "rank": 0.01574751728337924, "text": "supporting"}
+{"count": 1, "ids": [4], "pos": "nns", "rank": 0.014580051540836535, "text": "constraints"}
+{"count": 1, "ids": [9], "pos": "nnp", "rank": 0.014580051540836535, "text": "diophantine"}
+{"count": 1, "ids": [23], "pos": "nn", "rank": 0.01455848138020153, "text": "generating"}
+{"count": 2, "ids": [21], "pos": "nns", "rank": 0.014401578695795841, "text": "algorithms"}
+{"count": 1, "ids": [10], "pos": "nns", "rank": 0.014034767360581776, "text": "equations"}
+{"count": 1, "ids": [27], "pos": "vbg", "rank": 0.013538057996281728, "text": "constructing"}
+{"count": 1, "ids": [16, 17], "pos": "np", "rank": 0.013165566753581374, "text": "upper bounds"}
+{"count": 1, "ids": [13], "pos": "nn", "rank": 0.012677117279878915, "text": "nonstrict"}
+{"count": 1, "ids": [18], "pos": "nns", "rank": 0.01217817545077327, "text": "components"}
+{"count": 1, "ids": [22], "pos": "nn", "rank": 0.010740361959290436, "text": "construction"}
+{"count": 2, "ids": [1], "pos": "nn", "rank": 0.006582783376790687, "text": "compatibility"}
+{"count": 1, "ids": [17], "pos": "nns", "rank": 0.006582783376790687, "text": "bounds"}
+{"count": 1, "ids": [26], "pos": "vbg", "rank": 0.006582783376790687, "text": "corresponding"}
+{"count": 2, "ids": [8], "pos": "nns", "rank": 0.004619494157502709, "text": "criteria"}
