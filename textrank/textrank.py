@@ -17,7 +17,7 @@ import string
 
 DEBUG = False # True
 
-ParsedGraf = namedtuple('ParsedGraf', 'id, sha1, graf')
+ParsedGraf = namedtuple('ParsedGraf', 'sha1, graf')
 WordNode = namedtuple('WordNode', 'word_id, raw, root, pos, keep, idx')
 RankedLexeme = namedtuple('RankedLexeme', 'text, rank, ids, pos, count')
 SummarySent = namedtuple('SummarySent', 'dist, idx, text')
@@ -57,30 +57,6 @@ def filter_quotes (text, is_email=True):
     """
     global DEBUG
     global PAT_FORWARD, PAT_REPLIED, PAT_UNSUBSC
-
-    if is_email:
-        text = filter(lambda x: x in string.printable, text)
-
-        if DEBUG:
-            print("text:", text)
-
-        # strip off quoted text in a forward
-        m = PAT_FORWARD.split(text, re.M)
-
-        if m and len(m) > 1:
-            text = m[0]
-
-        # strip off quoted text in a reply
-        m = PAT_REPLIED.split(text, re.M)
-
-        if m and len(m) > 1:
-            text = m[0]
-
-        # strip off any trailing unsubscription notice
-        m = PAT_UNSUBSC.split(text, re.M)
-
-        if m:
-            text = m[0]
 
     # replace any remaining quoted text with blank lines
     lines = []
@@ -174,7 +150,7 @@ def fix_hypenation (foo):
     return bar
 
 
-def parse_graf (doc_id, graf_text, base_idx, spacy_nlp=None):
+def parse_graf (graf_text, base_idx, spacy_nlp=None):
     """
     CORE ALGORITHM: parse and markup sentences in the given paragraph
     """
@@ -240,29 +216,31 @@ def parse_graf (doc_id, graf_text, base_idx, spacy_nlp=None):
             graf.append(list(word))
             new_base_idx += 1
 
-        markup.append(ParsedGraf(id=doc_id, sha1=digest.hexdigest(), graf=graf))
+        markup.append(ParsedGraf(sha1=digest.hexdigest(), graf=graf))
 
     return markup, new_base_idx
 
 
-def parse_doc (json_iter):
+def parse_doc (doc):
     """
     parse one document to prep for TextRank
     """
     global DEBUG
 
-    for meta in json_iter:
-        base_idx = 0
+    base_idx = 0
 
-        for graf_text in filter_quotes(meta["text"], is_email=False):
-            if DEBUG:
-                print("graf_text:", graf_text)
+    for graf_text in filter_quotes(doc):
+        if DEBUG:
+            print("graf_text:", graf_text)
 
-            grafs, new_base_idx = parse_graf(meta["id"], graf_text, base_idx)
-            base_idx = new_base_idx
+        grafs, new_base_idx = parse_graf(graf_text, base_idx)
+        base_idx = new_base_idx
 
-            for graf in grafs:
-                yield graf
+        for graf in grafs:
+            yield graf
+
+    # for meta in json_iter:
+
 
 
 ######################################################################
@@ -346,7 +324,9 @@ def text_rank (path):
     """
     run the TextRank algorithm
     """
-    graph = build_graph(json_iter(path))
+
+    # graph = build_graph(json_iter(path))
+    graph = build_graph(docu_iter(path))
     ranks = nx.pagerank(graph)
 
     return graph, ranks
@@ -565,6 +545,8 @@ def normalize_key_phrases (path, ranks, stopwords=None, spacy_nlp=None, skip_ner
 
     if isinstance(path, str):
         path = json_iter(path)
+
+    path = docu_iter(path)
 
     for meta in path:
         sent = [w for w in map(WordNode._make, meta["graf"])]
@@ -787,6 +769,12 @@ def json_iter (path):
     with open(path, 'r') as f:
         for line in f.readlines():
             yield json.loads(line)
+
+
+def docu_iter (doc):
+
+    for line in doc:
+        yield json.loads(line)
 
 
 def pretty_print (obj, indent=False):
