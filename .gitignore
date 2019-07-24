@@ -124,6 +124,11 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
+# GoogleScraper
+.scrapecache
+googlescraper.log
+google_scraper.db
+
 .gitignore
 .idea/workspace.xml
 textrank/__pycache__/
