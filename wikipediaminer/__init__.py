@@ -1,0 +1,1 @@
+from .wikipediaminer import mine_wiki_articles

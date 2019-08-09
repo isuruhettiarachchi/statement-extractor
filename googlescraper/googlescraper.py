@@ -5,11 +5,12 @@ def getUrls(keyword):
 
     config = {
         'use_own_ip': 'False',
-        'keyword': keyword,
+        'keyword': keyword + " site:en.wikipedia.org",
         'search_engines': ['bing', ],
         'num_pages_for_keyword': 1,
         'scrape_method': 'http',
-        'do_caching': 'False'
+        'do_caching': 'False',
+
     }
 
     try:
@@ -17,5 +18,4 @@ def getUrls(keyword):
     except GoogleSearchError as e:
         print(e)
 
-    # print(search)
     return search.serps
